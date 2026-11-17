@@ -1,7 +1,9 @@
 import { initShell, setTheme } from "./shell";
 import { initCrtBoot } from "./crt";
 import { initPacketStages } from "./packets";
+import { initTypewriter } from "./typewriter";
 
+initTypewriter();
 initCrtBoot();
 initPacketStages();
 

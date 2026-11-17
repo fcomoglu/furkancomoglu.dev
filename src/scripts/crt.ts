@@ -81,6 +81,8 @@ export function initCrtBoot() {
     main.style.removeProperty("filter");
     main.style.removeProperty("opacity");
     main.style.removeProperty("transform");
+    document.documentElement.classList.add("crt-ready");
+    window.dispatchEvent(new Event("crt:ready"));
     startInstability();  };
 
   const lightTheme = document.documentElement.dataset["theme"] === "light";

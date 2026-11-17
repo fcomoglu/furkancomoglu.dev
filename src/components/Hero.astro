@@ -17,7 +17,7 @@ const first = parts.join(" ");
       <p class="line"><span class="accent">➜</span> <span class="cyan">~</span> whoami</p>
       <p class="line out">{profile.role} · {profile.location}</p>
 
-      <h1 class="name">{first} <span class="l2">{last}</span><span class="caret" aria-hidden="true"></span></h1>
+      <h1 class="name" aria-label={profile.name} data-typewriter><span data-type>{`${first} `}</span><span class="l2" data-type>{last}</span><span class="caret" aria-hidden="true"></span></h1>
 
       <p class="tagline">
         {profile.tagline.map((t, i) => <>{i > 0 && <span class="faint"> · </span>}<span>{t}</span></>)}
@@ -100,6 +100,11 @@ const first = parts.join(" ");
     box-shadow: 0 0 14px color-mix(in srgb, var(--warm) 70%, transparent);
     vertical-align: -0.04em;
     animation: blink 1.06s step-end infinite !important;
+  }
+  /* solid while typing, like a real terminal */
+  .caret.typing {
+    animation: none !important;
+    opacity: 1;
   }
   @keyframes blink {
     0%, 100% { opacity: 1; }
