@@ -17,12 +17,12 @@ export function initTypewriter() {
   caret?.classList.add("typing");
 
   const type = async () => {
-    await sleep(350);
+    await sleep(200);
     for (const [i, part] of parts.entries()) {
       for (const ch of texts[i] ?? "") {
         part.textContent += ch;
         // human-ish rhythm: irregular keystrokes, a beat after finishing a word
-        await sleep(ch === " " ? rand(160, 240) : rand(65, 145));
+        await sleep(ch === " " ? rand(90, 140) : rand(30, 75));
       }
     }
     caret?.classList.remove("typing");
