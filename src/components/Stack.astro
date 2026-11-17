@@ -1,0 +1,91 @@
+---
+import SectionHead from "./SectionHead.astro";
+import { stack, stackIntro } from "../data/profile";
+---
+
+<section class="section wrap" id="stack">
+  <SectionHead num="01" cmd="cat ./stack.md" title={stackIntro.title} lede={stackIntro.lede} />
+
+  <div class="bgstage reveal" data-bg="packets">
+    <p class="stage-hint mono" aria-hidden="true">
+      <span class="accent">●</span> network traffic · hover to read · click to follow a stream
+    </p>
+    <canvas class="stage-canvas" aria-label="Animated live packet capture"></canvas>
+  </div>
+
+  <pre class="ascii reveal" aria-label="Request path diagram">{stackIntro.diagram.replace(/^\n/, "")}</pre>
+
+  <div class="grid">
+    {
+      stack.map((layer, i) => (
+        <article class="card panel reveal" style={`transition-delay:${i * 60}ms`}>
+          <h3>
+            <span class="accent mono">##</span> {layer.title}
+          </h3>
+          <p class="muted">{layer.body}</p>
+          <ul class="chips">
+            {layer.items.map((it) => (
+              <li class="chip">{it}</li>
+            ))}
+          </ul>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .bgstage {
+    position: relative;
+    height: 420px;
+    margin-bottom: 48px;
+    border-radius: 8px;
+    cursor: crosshair;
+  }
+  /* corner brackets */
+  .bgstage::before,
+  .bgstage::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border: 1px solid var(--line-2);
+    pointer-events: none;
+  }
+  .bgstage::before { top: -8px; left: -8px; border-right: 0; border-bottom: 0; }
+  .bgstage::after { bottom: -8px; right: -8px; border-left: 0; border-top: 0; }
+  .stage-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .stage-hint {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    margin: 0;
+    font-size: 11px;
+    line-height: 1.4;
+    color: var(--faint);
+    pointer-events: none;
+  }
+  @media (max-width: 720px) {
+    .bgstage { height: 340px; }
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .card { padding: 24px; }
+  h3 { margin: 0 0 6px; font-size: 18px; font-weight: 600; }
+  p { margin: 0 0 16px; font-size: 15px; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  @media (max-width: 720px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>

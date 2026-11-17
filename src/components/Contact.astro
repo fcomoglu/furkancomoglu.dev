@@ -1,0 +1,90 @@
+---
+import SectionHead from "./SectionHead.astro";
+import { profile } from "../data/profile";
+const year = new Date().getFullYear();
+---
+
+<section class="section wrap" id="contact">
+  <SectionHead
+    num="07"
+    cmd="./contact.sh"
+    title="Let's build something."
+    lede="Open to Senior Full-Stack Engineer and Tech Lead roles, remote or in Istanbul."
+  />
+
+  <div class="contact reveal">
+    <a class="mail" href={`mailto:${profile.email}`}>
+      <span class="mono accent">→</span>
+      {profile.email}
+    </a>
+    <ul class="links mono">
+      <li><a href={profile.resume} download>resume.pdf <span aria-hidden="true">↓</span></a></li>
+      {
+        profile.links.map((l) => (
+          <li>
+            <a href={l.href} target="_blank" rel="noopener noreferrer">
+              {l.label.toLowerCase()} <span class="faint">/{l.handle}</span> <span aria-hidden="true">↗</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<footer class="wrap footer mono">
+  <span>© {year} {profile.name}</span>
+  <span>{profile.location}</span>
+  <span class="hint">press <kbd>`</kbd> for a shell</span>
+</footer>
+
+<style>
+  .contact {
+    border-top: 1px solid var(--line);
+    padding-top: 32px;
+  }
+  .mail {
+    display: inline-flex;
+    gap: 14px;
+    align-items: baseline;
+    font-family: var(--display);
+    font-size: clamp(20px, 4.2vw, 44px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    word-break: break-all;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-size: 0 2px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s;
+  }
+  .mail:hover { background-size: 100% 2px; }
+  .links {
+    list-style: none;
+    padding: 0;
+    margin: 28px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .links a {
+    display: inline-block;
+    border: 1px solid var(--line-2);
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 13.5px;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .links a:hover { border-color: var(--accent); color: var(--accent); }
+  .footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    font-size: 12.5px;
+    color: var(--faint);
+    padding-top: 96px;
+    padding-bottom: 40px;
+  }
+  .hint { margin-left: auto; }
+  @media (max-width: 600px) { .hint { margin-left: 0; } }
+</style>

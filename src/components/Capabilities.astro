@@ -1,0 +1,61 @@
+---
+import SectionHead from "./SectionHead.astro";
+import { capabilities } from "../data/profile";
+---
+
+<section class="section wrap" id="capabilities">
+  <SectionHead
+    num="03"
+    cmd="grep -r 'capabilities'"
+    title="Capabilities"
+    lede="What I am trusted with in production: performance, data, async work and the people who ship it."
+  />
+
+  <div class="grid">
+    {
+      capabilities.map((c, i) => (
+        <div class="cap reveal" style={`transition-delay:${(i % 3) * 60}ms`}>
+          <h3 class="mono">
+            <span class="cyan">[{String(i + 1).padStart(2, "0")}]</span> {c.title}
+          </h3>
+          <ul>
+            {c.items.map((it) => (
+              <li>{it}</li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+  }
+  .cap {
+    padding: 24px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  h3 { font-size: 14px; font-weight: 600; margin: 0 0 14px; }
+  ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  li {
+    font-size: 15px;
+    color: var(--muted);
+    padding-left: 18px;
+    position: relative;
+  }
+  li::before {
+    content: "›";
+    position: absolute;
+    left: 2px;
+    color: var(--accent);
+    font-family: var(--mono);
+  }
+  @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+</style>

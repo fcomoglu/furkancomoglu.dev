@@ -1,0 +1,62 @@
+---
+import SectionHead from "./SectionHead.astro";
+import { education, languages, profile } from "../data/profile";
+---
+
+<section class="section wrap" id="background">
+  <SectionHead num="06" cmd="cat ~/.profile" title="Background" lede={profile.summary} />
+
+  <div class="grid">
+    <div class="panel box reveal">
+      <h3 class="mono"><span class="accent">$</span> education</h3>
+      {
+        education.map((e) => (
+          <div class="row">
+            <div>
+              <p class="strong">{e.school}</p>
+              <p class="muted">{e.degree}</p>
+            </div>
+            <p class="mono faint right">
+              {e.period}
+              <br />
+              {e.place}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+    <div class="panel box reveal">
+      <h3 class="mono"><span class="accent">$</span> locale</h3>
+      {
+        languages.map((l) => (
+          <div class="row">
+            <p class="strong">{l.name}</p>
+            <p class="mono faint right">{l.level}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 16px;
+  }
+  .box { padding: 24px; }
+  h3 { font-size: 14px; margin: 0 0 8px; font-weight: 600; }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .row:last-child { border-bottom: 0; padding-bottom: 0; }
+  p { margin: 0; font-size: 15px; }
+  .strong { font-weight: 600; }
+  .right { text-align: right; font-size: 12.5px; white-space: nowrap; }
+  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,23 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="404 | not found">
+  <main class="wrap nf mono">
+    <p><span class="accent">➜</span> <span class="cyan">~</span> cd {Astro.url.pathname}</p>
+    <p class="rose">zsh: no such file or directory</p>
+    <p><a class="accent" href="/">cd ~ ↩</a></p>
+  </main>
+</Base>
+
+<style>
+  .nf {
+    min-height: 100vh;
+    display: grid;
+    align-content: center;
+    gap: 6px;
+    font-size: 15px;
+  }
+  p { margin: 0; }
+  a { text-decoration: underline; text-underline-offset: 3px; }
+</style>

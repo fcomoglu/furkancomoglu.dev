@@ -1,0 +1,112 @@
+---
+import { profile, nav } from "../data/profile";
+---
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="logo mono" aria-label="Back to top">{profile.initials}<span class="accent">_</span></a>
+    <nav aria-label="Sections">
+      <ul>
+        {nav.map((n) => <li><a href={`#${n.id}`} data-nav={n.id}>{n.label}</a></li>)}
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle colour theme" title="Toggle theme">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.39 5.39 0 0 1-4.4 2.26 5.4 5.4 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1Z"/></svg>
+      </button>
+      <a class="resume-link mono" href={profile.resume} download>Resume <span aria-hidden="true">↓</span></a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    backdrop-filter: blur(12px);
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    height: 56px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .logo {
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+  }
+  nav {
+    flex: 1;
+    min-width: 0;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  ul::-webkit-scrollbar { display: none; }
+  li a {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    padding: 6px 10px;
+    border-radius: 6px;
+    display: block;
+    white-space: nowrap;
+    transition: color 0.15s, background 0.15s;
+  }
+  li a:hover,
+  li a.active {
+    color: var(--text);
+    background: var(--accent-dim);
+  }
+  li a.active::before {
+    content: "> ";
+    color: var(--accent);
+  }
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .icon-btn {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    background: none;
+    border: 1px solid var(--line-2);
+    border-radius: 6px;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .icon-btn:hover { color: var(--text); }
+  .resume-link {
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: var(--bg);
+    padding: 5px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+    text-shadow: none;
+    box-shadow: var(--glow-accent);
+    transition: box-shadow 0.2s;
+  }
+  .resume-link:hover { box-shadow: 0 0 32px rgba(0, 229, 255, 0.6); }
+
+  @media (max-width: 720px) {
+    .nav-inner { gap: 12px; }
+    nav { display: none; }
+    .logo { flex: 1; }
+  }
+</style>

@@ -1,0 +1,67 @@
+---
+import SectionHead from "./SectionHead.astro";
+import { patterns } from "../data/profile";
+const total = String(patterns.length).padStart(2, "0");
+---
+
+<section class="section wrap" id="patterns">
+  <SectionHead
+    num="02"
+    cmd="ls ./patterns"
+    title="Patterns I build with"
+    lede="Architecture is a set of decisions you can defend. These are the ones I reach for, and where I have used them."
+  />
+
+  <div class="grid">
+    {
+      patterns.map((p, i) => (
+        <article class="card panel reveal" style={`transition-delay:${(i % 3) * 60}ms`}>
+          <div class="meta mono">
+            <span class="accent">{String(i + 1).padStart(2, "0")}</span>
+            <span class="faint">/{total}</span>
+            <span class="cat">{p.category}</span>
+          </div>
+          <h3>{p.title}</h3>
+          <p class="muted">{p.body}</p>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .card {
+    padding: 22px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .card:hover { border-color: var(--line-2); transform: translateY(-2px); }
+  .card:first-child { grid-column: span 2; }
+  .meta {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+    font-size: 12px;
+    margin-bottom: 18px;
+  }
+  .cat {
+    margin-left: auto;
+    color: var(--violet);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 11px;
+  }
+  h3 { margin: 0 0 8px; font-size: 18px; font-weight: 600; }
+  p { margin: 0; font-size: 15px; }
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr; }
+    .card:first-child { grid-column: auto; }
+  }
+</style>

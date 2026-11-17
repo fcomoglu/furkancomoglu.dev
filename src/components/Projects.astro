@@ -1,0 +1,104 @@
+---
+import SectionHead from "./SectionHead.astro";
+import { projects, otherWork } from "../data/profile";
+---
+
+<section class="section wrap" id="projects">
+  <SectionHead
+    num="05"
+    cmd="tree ./projects -L 1"
+    title="Selected work"
+    lede="Systems I designed or co-designed, with the shape of each one."
+  />
+
+  <div class="list">
+    {
+      projects.map((p, i) => (
+        <article class="proj panel reveal">
+          <header>
+            <span class="idx mono faint">{String(i + 1).padStart(2, "0")}</span>
+            <div>
+              <h3>{p.name}</h3>
+              <p class="meta mono">
+                <span class="violet">{p.domain}</span> <span class="faint">·</span>{" "}
+                <span class="muted">{p.context}</span>
+              </p>
+            </div>
+          </header>
+          <div class="cols">
+            <div>
+              <p class="summary">{p.summary}</p>
+              <ul class="notes">
+                {p.notes.map((n) => (
+                  <li>{n}</li>
+                ))}
+              </ul>
+              <ul class="chips">
+                {p.stack.map((s) => (
+                  <li class="chip">{s}</li>
+                ))}
+              </ul>
+            </div>
+            <pre class="ascii" aria-label={`${p.name} architecture diagram`}>{p.diagram.replace(/^\n/, "")}</pre>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+
+  <div class="other reveal">
+    <p class="mono faint">// also</p>
+    <ul>
+      {otherWork.map((o) => <li>{o}</li>)}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .list { display: grid; gap: 16px; }
+  .proj { padding: clamp(20px, 3vw, 28px); }
+  header {
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+    margin-bottom: 16px;
+  }
+  .idx { font-size: 13px; }
+  h3 { margin: 0; font-size: clamp(19px, 2.4vw, 23px); font-weight: 600; letter-spacing: -0.01em; }
+  .meta { margin: 2px 0 0; font-size: 12.5px; }
+  .cols {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    gap: 24px;
+    align-items: start;
+  }
+  .summary { margin: 0 0 12px; font-size: 15.5px; }
+  .notes {
+    list-style: none;
+    margin: 0 0 16px;
+    padding: 0;
+    display: grid;
+    gap: 6px;
+  }
+  .notes li {
+    font-size: 14.5px;
+    color: var(--muted);
+    padding-left: 18px;
+    position: relative;
+  }
+  .notes li::before {
+    content: "+";
+    position: absolute;
+    left: 2px;
+    color: var(--accent);
+    font-family: var(--mono);
+  }
+  .chips { list-style: none; padding: 0; margin: 0; }
+  .ascii { font-size: 12px; }
+  .other { margin-top: 28px; }
+  .other p { margin: 0 0 6px; font-size: 13px; }
+  .other ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 15px; }
+  @media (max-width: 860px) {
+    .cols { grid-template-columns: 1fr; }
+  }
+</style>
