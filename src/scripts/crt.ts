@@ -51,8 +51,16 @@ function startInstability() {
   const ph = [rand(0, 6), rand(0, 6), rand(0, 6)];
   const TAU = Math.PI * 2;
   const t0 = performance.now();
+  // update at ~30 fps instead of the display refresh rate: frames with no style change
+  // need no recomposite, so the GPU does far less work on 60/120/144 Hz screens
+  const FRAME_MS = 1000 / 30;
+  let lastUpdate = -Infinity;
+  let rafId = 0;
   const loop = (now: number) => {
-    if (isDark() && !document.hidden) {
+    rafId = 0;
+    if (!isDark()) return; // light theme hides the overlay: stop until the theme flips back
+    if (!document.hidden && now - lastUpdate >= FRAME_MS) {
+      lastUpdate = now;
       const t = (now - t0) / 1000;
       const v =
         0.45 * Math.sin(TAU * 3.6 * t + ph[0]!) +
@@ -60,12 +68,19 @@ function startInstability() {
         0.2 * Math.sin(TAU * 24.4 * t + ph[2]!);
       pulse.style.opacity = v > 0 ? (v * BRIGHTEN).toFixed(4) : "0";
       dim.style.opacity = v < 0 ? (-v * DARKEN).toFixed(4) : "0";
-      // fast flicker: a new random intensity every frame (runs at the display refresh rate)
+      // fast flicker: a new random intensity on every update
       if (flicker) flicker.style.opacity = Math.random().toFixed(3);
     }
-    requestAnimationFrame(loop);
+    rafId = requestAnimationFrame(loop);
   };
-  requestAnimationFrame(loop);
+  const start = () => {
+    if (!rafId && isDark()) rafId = requestAnimationFrame(loop);
+  };
+  new MutationObserver(start).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-theme"],
+  });
+  start();
 }
 
 export function initCrtBoot() {
