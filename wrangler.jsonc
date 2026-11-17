@@ -1,13 +1,19 @@
 {
-  // Cloudflare Workers (static assets) - ücretsiz plan yeterli.
-  // Deploy: `npm run deploy` veya Cloudflare dashboard'dan Git bağlantısı
-  // (build command: npm run build, deploy command: npx wrangler deploy).
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "furkancomoglu-dev",
+  "main": "worker/index.ts",
   "compatibility_date": "2026-11-01",
-  "routes": [{ "pattern": "furkancomoglu.dev", "custom_domain": true }],
+  "routes": [
+    { "pattern": "furkancomoglu.dev", "custom_domain": true },
+    { "pattern": "www.furkancomoglu.dev", "custom_domain": true }
+  ],
+  "workers_dev": false,
+  "preview_urls": false,
   "assets": {
     "directory": "./dist",
-    "not_found_handling": "404-page"
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    // only pages hit the Worker (for the www redirect); hashed assets are served directly
+    "run_worker_first": ["/*", "!/_astro/*", "!/favicon.svg"]
   }
 }
