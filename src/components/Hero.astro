@@ -36,7 +36,16 @@ const first = parts.join(" ");
     {
       profile.stats.map((s, i) => (
         <div class="stat reveal" style={`transition-delay:${i * 80}ms`}>
-          <dt class="mono">{s.value}</dt>
+          <dt class="mono">
+            {s.value.endsWith("+") ? (
+              <>
+                {s.value.slice(0, -1)}
+                <span class="plus">+</span>
+              </>
+            ) : (
+              s.value
+            )}
+          </dt>
           <dd>{s.label}</dd>
         </div>
       ))
@@ -163,6 +172,10 @@ const first = parts.join(" ");
     font-weight: 700;
     color: var(--accent);
     line-height: 1.1;
+  }
+  .stat dt .plus {
+    color: var(--warm);
+    text-shadow: var(--glow-warm);
   }
   .stat dd {
     margin: 4px 0 0;
