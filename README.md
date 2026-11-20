@@ -2,7 +2,7 @@
 
 ```console
 furkan@istanbul:~$ whoami
-Furkan Comoglu · Senior Full-Stack Engineer · Istanbul, Türkiye
+Furkan Comoglu · Senior Software Engineer · Istanbul, Türkiye
 
 furkan@istanbul:~$ cat about.txt
 10+ years designing, scaling and shipping high-traffic web platforms,
@@ -14,11 +14,11 @@ php-symfony  java-spring-boot  nodejs  react  vuejs  typescript
 postgresql   mysql  mongodb  redis  elasticsearch  rabbitmq  docker  aws
 
 furkan@istanbul:~$ git log --oneline career
-d0c7a2e (HEAD -> main) Senior Full-Stack Engineer @ Dugun.com
-a41f9bc Senior Full-Stack Engineer @ next4biz
-7e3b10d Senior Full-Stack Engineer @ Sefamerve
-3c58e61 Senior Full-Stack Engineer @ TRS GROUP
-91d0f4a Full-Stack Engineer @ Freelance
+d0c7a2e (HEAD -> main) Senior Software Engineer @ Dugun.com
+a41f9bc Senior Software Engineer @ next4biz
+7e3b10d Senior Software Engineer @ Sefamerve
+3c58e61 Senior Software Engineer @ TRS GROUP
+91d0f4a Software Engineer @ Freelance
 0a1e2c3 Software Engineering Intern @ Setur
 
 furkan@istanbul:~$ ./contact.sh

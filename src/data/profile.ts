@@ -61,9 +61,9 @@ export const profile = {
   initials: "FC",
   user: "furkan",
   host: "istanbul",
-  role: "Senior Full-Stack Engineer",
+  role: "Senior Software Engineer",
   location: "Istanbul, Türkiye",
-  availability: "Open to remote · Senior Full-Stack & Tech Lead roles",
+  availability: "Open to remote · Senior Software Engineer & Tech Lead roles",
   tagline: ["PHP / Symfony", "Java / Spring Boot", "Node.js", "React", "Vue.js", "TypeScript"],
   lede:
     "I design, scale and ship high-traffic web platforms, multi-tenant SaaS products and distributed microservices, from architecture to production.",
@@ -232,7 +232,7 @@ export const experience: Role[] = [
     hash: "d0c7a2e",
     tag: "v6",
     head: true,
-    title: "Senior Full-Stack Engineer",
+    title: "Senior Software Engineer",
     company: "Dugun.com",
     period: "Jul 2025 - Jul 2026",
     location: "Istanbul · Remote",
@@ -258,7 +258,7 @@ export const experience: Role[] = [
   {
     hash: "a41f9bc",
     tag: "v5",
-    title: "Senior Full-Stack Engineer",
+    title: "Senior Software Engineer",
     company: "next4biz",
     period: "Jul 2022 - Jul 2025",
     location: "Istanbul · Hybrid",
@@ -284,7 +284,7 @@ export const experience: Role[] = [
   {
     hash: "7e3b10d",
     tag: "v4",
-    title: "Senior Full-Stack Engineer",
+    title: "Senior Software Engineer",
     company: "Sefamerve",
     period: "Oct 2020 - Jun 2022",
     location: "Istanbul · Remote",
@@ -306,7 +306,7 @@ export const experience: Role[] = [
   {
     hash: "3c58e61",
     tag: "v3",
-    title: "Senior Full-Stack Engineer",
+    title: "Senior Software Engineer",
     company: "TRS GROUP",
     period: "May 2017 - Oct 2020",
     location: "Istanbul",
@@ -328,7 +328,7 @@ export const experience: Role[] = [
   {
     hash: "91d0f4a",
     tag: "v2",
-    title: "Full-Stack Engineer",
+    title: "Software Engineer",
     company: "Freelance",
     period: "Jan 2013 - May 2017",
     location: "Remote",
