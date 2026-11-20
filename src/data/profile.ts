@@ -64,11 +64,11 @@ export const profile = {
   role: "Senior Software Engineer",
   location: "Istanbul, Türkiye",
   availability: "Open to remote · Senior Software Engineer & Tech Lead roles",
-  tagline: ["PHP / Symfony", "Java / Spring Boot", "Node.js", "React", "Vue.js", "TypeScript"],
+  tagline: ["PHP / Symfony", "Java / Spring Boot", "Node.js", "PostgreSQL", "RabbitMQ", "React / Vue.js"],
   lede:
-    "I design, scale and ship high-traffic web platforms, multi-tenant SaaS products and distributed microservices, from architecture to production.",
+    "I design and scale the backend of high-traffic platforms: APIs, data stores, queues and caches, from architecture to production.",
   summary:
-    "10+ years across marketplaces, e-commerce, CRM and B2B travel. Deep backend architecture (Java/Spring Boot, PHP/Symfony, Node.js, PostgreSQL) combined with modern frontend delivery (React, Vue.js, TypeScript), Clean Architecture, AI-assisted development workflows and technical mentorship.",
+    "Backend-focused, with 10+ years across marketplaces, e-commerce, CRM and B2B travel. Specialized in API and system design (PHP/Symfony, Java/Spring Boot, Node.js), PostgreSQL at scale, event-driven architecture and multi-layer caching. Solid, hands-on frontend experience with React, Vue.js and TypeScript, owning features end to end, from database to UI. Experienced in technical mentorship and AI-assisted development.",
   email: "furkan.comoglu@hotmail.com",
   resume: "/furkan-comoglu-resume.pdf",
   links: [
