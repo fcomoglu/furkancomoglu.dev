@@ -306,7 +306,7 @@ export const experience: Role[] = [
   {
     hash: "3c58e61",
     tag: "v3",
-    title: "Senior Software Engineer",
+    title: "Software Engineer",
     company: "TRS GROUP",
     period: "May 2017 - Oct 2020",
     location: "Istanbul",
